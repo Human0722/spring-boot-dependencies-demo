@@ -1,14 +1,13 @@
-package io.github.human0722.springbootmybatisplusdemo.domain;
+package io.github.human0722.springbootmybatisdemo.domain;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
+import java.lang.annotation.Documented;
 
 /**
  * @author xueliang
- * @description TODO
  * @date 2022-11-28 17:13
  */
 @Data
@@ -19,6 +18,5 @@ public class User {
     private String name;
     private Integer age;
     private String email;
-    @TableLogic
     private Integer is_deleted;
 }
