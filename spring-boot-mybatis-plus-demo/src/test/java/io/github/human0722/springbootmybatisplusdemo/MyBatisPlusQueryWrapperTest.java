@@ -1,7 +1,7 @@
 package io.github.human0722.springbootmybatisplusdemo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.github.human0722.springbootmybatisplusdemo.dao.UserMapper;
+import io.github.human0722.springbootmybatisplusdemo.dao.UserDao;
 import io.github.human0722.springbootmybatisplusdemo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,13 @@ import java.util.Map;
 public class MyBatisPlusQueryWrapperTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     @Test
     public void testQueryWrapperSelect() {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("name", "age");
-        List<Map<String, Object>> maps = userMapper.selectMaps(queryWrapper);
+        List<Map<String, Object>> maps = userDao.selectMaps(queryWrapper);
         maps.forEach(System.out::println);
     }
 
@@ -33,7 +33,7 @@ public class MyBatisPlusQueryWrapperTest {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         // where id in [1,2]
         queryWrapper.inSql("id", "select id from t_user where id <= 3");
-        List<User> list = userMapper.selectList(queryWrapper);
+        List<User> list = userDao.selectList(queryWrapper);
         list.forEach(System.out::println);
     }
 }

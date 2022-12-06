@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.github.human0722.springbootmybatisdemo.dao.UserDao">
-
-    <select id="getUserById" resultType="io.github.human0722.springbootmybatisdemo.domain.User" parameterType="int">
+    <select id="getUserById" resultType="User" parameterType="int">
         select * from t_user where id=#{id}
+    </select>
+
+    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="User">
+        insert into t_user (name, age, email, is_deleted)
+        values (#{name}, #{age}, #{email}, #{is_deleted} )
+    </insert>
+
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user(name, age, email, is_deleted) values
+        <foreach item="user" collection="list" separator=",">
+            (#{user.name}, #{user.age}, #{user.email}, #{user.is_deleted})
+        </foreach>
+    </insert>
+
+    <delete id="deleteOne" parameterType="string">
+        delete from t_user where id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="User">
+        update table t_user set name = "a"
+    </update>
+
+    <select id="selectPage" resultType="User">
+        select * from t_user
+        <where>
+            <if test="#{name} != null and #{name} != ''">
+                name like "%"#{name}"%"
+            </if>
+        </where>
+        limit 0, 5
     </select>
 </mapper>

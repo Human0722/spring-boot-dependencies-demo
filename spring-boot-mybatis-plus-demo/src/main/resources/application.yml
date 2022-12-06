@@ -9,6 +9,9 @@ mybatis-plus:
   # 配置MyBatis日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 表前缀
   global-config:
     db-config:
       table-prefix: t_
+  # 别名扫描位置
+  type-aliases-package: io.github.human0722.springbootmybatisplusdemo.domain
