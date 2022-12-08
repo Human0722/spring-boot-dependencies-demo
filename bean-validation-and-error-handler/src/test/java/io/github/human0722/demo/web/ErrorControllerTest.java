@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * @author xueliang
- * @description TODO
  * @date 2022-12-06 10:58
  */
 @SpringBootTest
@@ -17,6 +16,6 @@ public class ErrorControllerTest {
 
     @Test
     void testErrorController() {
-        System.out.println(errorController.test());
+        System.out.println();
     }
 }
