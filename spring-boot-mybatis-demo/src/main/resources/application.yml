@@ -6,3 +6,4 @@ spring:
     password: puhou
 mybatis:
   mapper-locations: classpath:mapper/**
+  type-aliases-package: io.github.human0722.springbootmybatisdemo.domain

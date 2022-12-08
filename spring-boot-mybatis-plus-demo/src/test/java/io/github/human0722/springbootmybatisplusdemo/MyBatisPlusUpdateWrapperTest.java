@@ -2,12 +2,11 @@ package io.github.human0722.springbootmybatisplusdemo;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import io.github.human0722.springbootmybatisplusdemo.dao.UserMapper;
+import io.github.human0722.springbootmybatisplusdemo.dao.UserDao;
 import io.github.human0722.springbootmybatisplusdemo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ import java.util.List;
 public class MyBatisPlusUpdateWrapperTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     @Test
     public void testUpdateWrapper() {
@@ -27,7 +26,7 @@ public class MyBatisPlusUpdateWrapperTest {
         updateWrapper.eq("id", "1");
         User user = new User();
         user.setName("bush");
-        int update = userMapper.update(user, updateWrapper);
+        int update = userDao.update(user, updateWrapper);
         System.out.println("affected rows:" + update);
     }
 
@@ -38,7 +37,7 @@ public class MyBatisPlusUpdateWrapperTest {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(name != null, "name", name);
         queryWrapper.eq(age != null, "age", age);
-        List<User> users = userMapper.selectList(queryWrapper);
+        List<User> users = userDao.selectList(queryWrapper);
         users.forEach(System.out::println);
     }
 }

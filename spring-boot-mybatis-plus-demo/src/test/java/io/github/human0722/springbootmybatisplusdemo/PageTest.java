@@ -1,7 +1,7 @@
 package io.github.human0722.springbootmybatisplusdemo;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.github.human0722.springbootmybatisplusdemo.dao.UserMapper;
+import io.github.human0722.springbootmybatisplusdemo.dao.UserDao;
 import io.github.human0722.springbootmybatisplusdemo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ import java.util.List;
 public class PageTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     @Test
     public void testPage() {
         Page<User> page = new Page<>(1,5);
-        userMapper.selectPage(page, null);
+        userDao.selectPage(page, null);
         List<User> records = page.getRecords();
         page.getCurrent();
         page.getSize();
