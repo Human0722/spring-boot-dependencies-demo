@@ -1,0 +1,8 @@
+admin:
+  name: admin1
+  password: admin1
+  roleList:
+    - role-name: admin1
+      description: administration1
+    - role-name: maintainer1
+      description: maintainer1

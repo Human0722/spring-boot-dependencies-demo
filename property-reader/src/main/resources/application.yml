@@ -1,0 +1,16 @@
+
+server:
+  port: 9001
+version:
+  latest: 3.2.0
+admin:
+  name: admin
+  password: admin
+  roleList:
+    - role-name: admin
+      description: administration
+    - role-name: maintainer
+      description: maintainer
+spring:
+  profiles:
+    active: dev

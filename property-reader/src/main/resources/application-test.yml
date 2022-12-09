@@ -1,0 +1,8 @@
+admin:
+  name: my-test-config
+  password: admin
+  roleList:
+    - role-name: admin
+      description: administration
+    - role-name: maintainer
+      description: maintainer
